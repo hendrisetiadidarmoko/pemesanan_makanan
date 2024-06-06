@@ -1,46 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:pemesanan_makanan/utils/navigator.dart';
-import 'package:pemesanan_makanan/ui/foodListComplete_screen.dart';
 import 'dart:async';
 
-class FoodListScreen extends StatefulWidget {
-  const FoodListScreen({Key? key}) : super(key: key);
+class FoodListCompleteScreen extends StatefulWidget {
+  const FoodListCompleteScreen({Key? key}) : super(key: key);
 
   @override
-  State<FoodListScreen> createState() => _FoodListScreenState();
+  State<FoodListCompleteScreen> createState() => _FoodListCompleteScreenState();
 }
 
-class _FoodListScreenState extends State<FoodListScreen> {
+class _FoodListCompleteScreenState extends State<FoodListCompleteScreen> {
   int _remainingTime = 60; // Waktu hitungan mundur dalam detik
   late Timer _timer; // Timer untuk menghitung mundur
-
-  @override
-  void initState() {
-    super.initState();
-    _startTimer();
-  }
-
-  @override
-  void dispose() {
-    _timer.cancel();
-    super.dispose();
-  }
-
-  void _startTimer() {
-    _timer = Timer.periodic(Duration(seconds: 1), (timer) {
-      setState(() {
-        if (_remainingTime > 0) {
-          _remainingTime--;
-        } else {
-          timer.cancel(); // Berhenti jika waktu habis
-          Navigator.pushReplacement(
-            context,
-            MaterialPageRoute(builder: (context) => FoodListCompleteScreen()),
-          );
-        }
-      });
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -134,38 +105,14 @@ class _FoodListScreenState extends State<FoodListScreen> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text('Hitungan'),
-                        Text('$_remainingTime detik'),
-                      ],
-                    ),
-                  ),
-                  Divider(
-                    color: Colors.black,
-                    thickness: 1,
-                  ),
-                  Padding(
-                    padding:
-                        EdgeInsets.all(10), // Adds padding around the button
-                    child: ElevatedButton(
-                      onPressed: () {
-                        Navigator.pushNamed(context, '/home');
-                      },
-                      style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all<Color>(
-                            Colors.transparent),
-                        elevation: MaterialStateProperty.all<double>(
-                            0), // Menghilangkan bayangan
-                        overlayColor: MaterialStateProperty.all<Color>(Colors
-                            .transparent), // Menghilangkan efek overlay saat ditekan
-                      ),
-                      child: Text(
-                        "Batal",
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 18,
-                          color: Color.fromRGBO(253, 65, 2, 1).withOpacity(0.8),
+                        Text('Status'),
+                        Text(
+                          'Complete',
+                          style: TextStyle(
+                            color: Color(0xFF0FB816),
+                          ),
                         ),
-                      ),
+                      ],
                     ),
                   ),
                 ],

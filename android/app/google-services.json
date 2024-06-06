@@ -1,26 +1,51 @@
 {
   "project_info": {
-    "project_number": "719846166270",
-    "project_id": "pemesananmakanan-67326",
-    "storage_bucket": "pemesananmakanan-67326.appspot.com"
+    "project_number": "1084195177372",
+    "project_id": "pemesananmakanan-715b2",
+    "storage_bucket": "pemesananmakanan-715b2.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:719846166270:android:b000853c45b77d13acdfaf",
+        "mobilesdk_app_id": "1:1084195177372:android:9f15a97c998c23f866fe59",
         "android_client_info": {
           "package_name": "com.example.pemesanan_makanan"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "1084195177372-fvaqm1ej7p4qbis8mgj5bl6n6vkl2161.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.pemesanan_makanan",
+            "certificate_hash": "72e1c6822990276dc82e0ce460992dc319a0fb8a"
+          }
+        },
+        {
+          "client_id": "1084195177372-k5cbvlpqq2fqb1v8e0s6qgdfbvbtolb4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
-          "current_key": "AIzaSyDLlXCW26I0GWSVgM_SC5VarrJxwp7TBIw"
+          "current_key": "AIzaSyCUjqPpa9WPUG7KFLyLZIofvZ_L9asuiW4"
         }
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1084195177372-k5cbvlpqq2fqb1v8e0s6qgdfbvbtolb4.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1084195177372-k2081glno2kntj5o39a982siuepaie7o.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.pemesananMakanan"
+              }
+            }
+          ]
         }
       }
     }

@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:pemesanan_makanan/ui/home_screen.dart';
 import 'package:pemesanan_makanan/ui/login.dart';
 import 'package:pemesanan_makanan/ui/foodList_screen.dart';
+import 'package:pemesanan_makanan/ui/keranjang_screen.dart';
+import 'package:pemesanan_makanan/ui/riwayat_screen.dart';
 
 class NavigatorScreen extends StatefulWidget {
   const NavigatorScreen({Key? key}) : super(key: key);
@@ -26,8 +28,8 @@ class _NavigatorScreenState extends State<NavigatorScreen> {
         index: _selectedIndex,
         children: [
           HomeScreen(),
-          LoginScreen(), // Replace with CartScreen() when created
-          FoodListScreen(), // Replace with FoodListScreen() when created
+          KeranjangScreen(), // Replace with CartScreen() when created
+          RiwayatScreen(), // Replace with FoodListScreen() when created
           LoginScreen(), // Replace with ProfileScreen() when created
         ],
       ),
@@ -42,8 +44,8 @@ class _NavigatorScreenState extends State<NavigatorScreen> {
             label: 'Cart',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.restaurant_menu),
-            label: 'Food List',
+            icon: Icon(Icons.history),
+            label: 'Riwayat',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person),

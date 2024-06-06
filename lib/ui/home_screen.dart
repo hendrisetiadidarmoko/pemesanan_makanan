@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:pemesanan_makanan/ui/menu_screen.dart';
 
 final List<String> imgList = [
   'https://images.unsplash.com/photo-1520342868574-5fa3804e551c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=6ff92caffcdd63681a35134a6770ed3b&auto=format&fit=crop&w=1951&q=80',
@@ -60,7 +61,6 @@ final List<Widget> imageSliders = imgList
     .toList();
 
 class _HomeScreenState extends State<HomeScreen> {
-
   int _current = 0;
   final CarouselController _controller = CarouselController();
 
@@ -152,14 +152,25 @@ class _HomeScreenState extends State<HomeScreen> {
                         width: 8,
                       ),
                       Container(
-                        width: 100,
-                        height: 100,
-                        decoration: BoxDecoration(
-                          border: Border.all(
-                            color: Color.fromRGBO(0, 0, 0, 0.25),
-                            width: 2,
+                        child: GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => MenuScreen()),
+                            );
+                          },
+                          child: Container(
+                            width: 100,
+                            height: 100,
+                            decoration: BoxDecoration(
+                              border: Border.all(
+                                color: Color.fromRGBO(0, 0, 0, 0.25),
+                                width: 2,
+                              ),
+                              borderRadius: BorderRadius.circular(10),
+                            ),
                           ),
-                          borderRadius: BorderRadius.circular(10),
                         ),
                       ),
                       SizedBox(width: 10),

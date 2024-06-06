@@ -41,48 +41,49 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyDVbV2-u8B1oqXH74myIS11Dwf-3PMg3hQ',
-    appId: '1:719846166270:web:c219a26a603be108acdfaf',
-    messagingSenderId: '719846166270',
-    projectId: 'pemesananmakanan-67326',
-    authDomain: 'pemesananmakanan-67326.firebaseapp.com',
-    storageBucket: 'pemesananmakanan-67326.appspot.com',
-    measurementId: 'G-C7QGNZ9SC2',
+    apiKey: 'AIzaSyAXxHRer8gOxbTNAUafDCC2GmYOYWpMyIU',
+    appId: '1:1084195177372:web:1bd1c44c22209ffb66fe59',
+    messagingSenderId: '1084195177372',
+    projectId: 'pemesananmakanan-715b2',
+    authDomain: 'pemesananmakanan-715b2.firebaseapp.com',
+    storageBucket: 'pemesananmakanan-715b2.appspot.com',
+    measurementId: 'G-4023Y7XEGH',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyDLlXCW26I0GWSVgM_SC5VarrJxwp7TBIw',
-    appId: '1:719846166270:android:b000853c45b77d13acdfaf',
-    messagingSenderId: '719846166270',
-    projectId: 'pemesananmakanan-67326',
-    storageBucket: 'pemesananmakanan-67326.appspot.com',
+    apiKey: 'AIzaSyCUjqPpa9WPUG7KFLyLZIofvZ_L9asuiW4',
+    appId: '1:1084195177372:android:9f15a97c998c23f866fe59',
+    messagingSenderId: '1084195177372',
+    projectId: 'pemesananmakanan-715b2',
+    storageBucket: 'pemesananmakanan-715b2.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyCv9zvzCcfpA1BO7PKJyDWRQ2fvlouNetM',
-    appId: '1:719846166270:ios:4e987a1f0875e04facdfaf',
-    messagingSenderId: '719846166270',
-    projectId: 'pemesananmakanan-67326',
-    storageBucket: 'pemesananmakanan-67326.appspot.com',
+    apiKey: 'AIzaSyAQpiaDbA4OiqMAa7Ar2lMwu13Lbj_T1WY',
+    appId: '1:1084195177372:ios:b03cb6b8cd21bb5b66fe59',
+    messagingSenderId: '1084195177372',
+    projectId: 'pemesananmakanan-715b2',
+    storageBucket: 'pemesananmakanan-715b2.appspot.com',
     iosBundleId: 'com.example.pemesananMakanan',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyCv9zvzCcfpA1BO7PKJyDWRQ2fvlouNetM',
-    appId: '1:719846166270:ios:4e987a1f0875e04facdfaf',
-    messagingSenderId: '719846166270',
-    projectId: 'pemesananmakanan-67326',
-    storageBucket: 'pemesananmakanan-67326.appspot.com',
+    apiKey: 'AIzaSyAQpiaDbA4OiqMAa7Ar2lMwu13Lbj_T1WY',
+    appId: '1:1084195177372:ios:b03cb6b8cd21bb5b66fe59',
+    messagingSenderId: '1084195177372',
+    projectId: 'pemesananmakanan-715b2',
+    storageBucket: 'pemesananmakanan-715b2.appspot.com',
     iosBundleId: 'com.example.pemesananMakanan',
   );
 
   static const FirebaseOptions windows = FirebaseOptions(
-    apiKey: 'AIzaSyDVbV2-u8B1oqXH74myIS11Dwf-3PMg3hQ',
-    appId: '1:719846166270:web:f2aaf9a972437771acdfaf',
-    messagingSenderId: '719846166270',
-    projectId: 'pemesananmakanan-67326',
-    authDomain: 'pemesananmakanan-67326.firebaseapp.com',
-    storageBucket: 'pemesananmakanan-67326.appspot.com',
-    measurementId: 'G-VBDD8CS4T9',
+    apiKey: 'AIzaSyAXxHRer8gOxbTNAUafDCC2GmYOYWpMyIU',
+    appId: '1:1084195177372:web:94c7a0b3b335fff466fe59',
+    messagingSenderId: '1084195177372',
+    projectId: 'pemesananmakanan-715b2',
+    authDomain: 'pemesananmakanan-715b2.firebaseapp.com',
+    storageBucket: 'pemesananmakanan-715b2.appspot.com',
+    measurementId: 'G-5VY7DPCFCV',
   );
+
 }
