@@ -33,10 +33,10 @@ class _FoodListScreenState extends State<FoodListScreen> {
           _remainingTime--;
         } else {
           timer.cancel(); // Berhenti jika waktu habis
-          Navigator.pushReplacement(
-            context,
-            MaterialPageRoute(builder: (context) => FoodListCompleteScreen()),
-          );
+          // Navigator.pushReplacement(
+          //   context,
+          //   MaterialPageRoute(builder: (context) => FoodListCompleteScreen()),
+          // );
         }
       });
     });

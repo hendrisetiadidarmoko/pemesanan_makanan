@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:pemesanan_makanan/utils/navigator.dart';
 import 'dart:async';
 
 class FoodListCompleteScreen extends StatefulWidget {
-  const FoodListCompleteScreen({Key? key}) : super(key: key);
+  final Map<String, dynamic> id_baru;
+
+  const FoodListCompleteScreen({Key? key, required this.id_baru})
+      : super(key: key);
 
   @override
   State<FoodListCompleteScreen> createState() => _FoodListCompleteScreenState();
@@ -48,41 +52,44 @@ class _FoodListCompleteScreenState extends State<FoodListCompleteScreen> {
                 ),
                 borderRadius: BorderRadius.circular(10),
               ),
+              padding: EdgeInsets.all(10),
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Padding(
-                    padding: EdgeInsets.all(10),
-                    child: Column(
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  ListView.builder(
+                    shrinkWrap: true,
+                    itemCount: widget.id_baru.length,
+                    itemBuilder: (context, index) {
+                      var menu = widget.id_baru['menu${index + 1}'];
+                      if (menu != null) {
+                        return Column(
                           children: [
-                            Text('Nasi Goreng Kambing'),
-                            Text('Rp 18.000'),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(menu['nama'] ?? ''),
+                                Text('Rp ${menu['harga'] ?? ''}'),
+                              ],
+                            ),
+                            SizedBox(height: 5),
                           ],
-                        ),
-                        SizedBox(height: 5),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text('Air Mineral'),
-                            Text('Rp 5.000'),
-                          ],
-                        ),
-                      ],
-                    ),
+                        );
+                      } else {
+                        // Return an empty Container if menu is null
+                        return Container();
+                      }
+                    },
                   ),
                   Divider(
                     color: Colors.black,
                     thickness: 1,
                   ),
-                  Padding(
-                    padding: EdgeInsets.all(10), // Adds padding around the Row
+                  Container(
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text('Total'),
-                        Text('Rp 23.000'),
+                        Text('Rp ${widget.id_baru['harga_akhir'] ?? ''}'),
                       ],
                     ),
                   ),
@@ -101,7 +108,7 @@ class _FoodListCompleteScreenState extends State<FoodListCompleteScreen> {
               child: Column(
                 children: [
                   Padding(
-                    padding: EdgeInsets.all(10), // Adds padding around the Row
+                    padding: EdgeInsets.all(10),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [

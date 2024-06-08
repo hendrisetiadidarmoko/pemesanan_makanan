@@ -1,17 +1,39 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:pemesanan_makanan/utils/navigator.dart';
-import 'dart:async';
+import 'package:intl/intl.dart'; // Add this import for date formatting
 
 class DetailPemesananScreen extends StatefulWidget {
-  const DetailPemesananScreen({Key? key}) : super(key: key);
+  final Map<String, dynamic> order;
+
+  const DetailPemesananScreen({Key? key, required this.order})
+      : super(key: key);
 
   @override
   State<DetailPemesananScreen> createState() => _DetailPemesananScreenState();
 }
 
 class _DetailPemesananScreenState extends State<DetailPemesananScreen> {
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+
   @override
   Widget build(BuildContext context) {
+    // Extracting data from the order
+    String orderNumber = widget.order['nomor_pemesanan'] ?? 'N/A';
+
+    String orderDate = '';
+    if (widget.order['waktu_pemesanan'] != null) {
+      Timestamp timestamp = widget.order['waktu_pemesanan'];
+      DateTime dateTime = timestamp.toDate();
+      orderDate = DateFormat('dd-MM-yyyy HH:mm').format(dateTime);
+    }
+
+    String totalPrice = widget.order['harga_akhir']?.toString() ?? '0';
+    List<Map<String, dynamic>> menuItems = widget.order.entries
+        .where((entry) => entry.key.startsWith('menu'))
+        .map((entry) => entry.value as Map<String, dynamic>)
+        .toList();
+
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -57,8 +79,8 @@ class _DetailPemesananScreenState extends State<DetailPemesananScreen> {
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Text('Nomer Pemesanan'),
-                                  Text('7384184218'),
+                                  Text('Nomor Pemesanan'),
+                                  Text(orderNumber),
                                 ],
                               ),
                               SizedBox(height: 5),
@@ -67,7 +89,7 @@ class _DetailPemesananScreenState extends State<DetailPemesananScreen> {
                                     MainAxisAlignment.spaceBetween,
                                 children: [
                                   Text('Waktu Pemesanan'),
-                                  Text('10 Mei 2024 | 08.00'),
+                                  Text(orderDate),
                                 ],
                               ),
                             ],
@@ -95,25 +117,21 @@ class _DetailPemesananScreenState extends State<DetailPemesananScreen> {
                         Padding(
                           padding: EdgeInsets.all(10),
                           child: Column(
-                            children: [
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
+                            children: menuItems.map((menuItem) {
+                              return Column(
                                 children: [
-                                  Text('Nasi Goreng Kambing'),
-                                  Text('Rp 18.000'),
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Text(menuItem['nama'] ?? ''),
+                                      Text('Rp ${menuItem['harga'] ?? 0}'),
+                                    ],
+                                  ),
+                                  SizedBox(height: 5),
                                 ],
-                              ),
-                              SizedBox(height: 5),
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text('Air Mineral'),
-                                  Text('Rp 5.000'),
-                                ],
-                              ),
-                            ],
+                              );
+                            }).toList(),
                           ),
                         ),
                         Divider(
@@ -127,11 +145,42 @@ class _DetailPemesananScreenState extends State<DetailPemesananScreen> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text('Total'),
-                              Text('Rp 23.000'),
+                              Text('Rp $totalPrice'),
                             ],
                           ),
                         ),
                       ],
+                    ),
+                  ),
+                  SizedBox(height: 15),
+                  ElevatedButton(
+                    onPressed: () {
+                      _firestore
+                          .collection('riwayat')
+                          .where('nomor_pemesanan', isEqualTo: orderNumber)
+                          .get()
+                          .then((snapshot) {
+                        snapshot.docs.forEach((doc) {
+                          doc.reference.delete();
+                        });
+                      });
+                      Navigator.pop(
+                          context); // Kembali ke layar sebelumnya setelah menghapus
+                    }, // Call the _editProfile method
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Color.fromRGBO(253, 65, 2, 1),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      minimumSize: Size(double.infinity, 50),
+                    ),
+                    child: Text(
+                      "hapus",
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 18,
+                        color: Colors.white,
+                      ),
                     ),
                   ),
                 ],

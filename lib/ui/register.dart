@@ -2,7 +2,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mdi/mdi.dart';
-import 'package:pemesanan_makanan/register/register_cubit.dart';
+import 'package:pemesanan_makanan/bloc/register/register_cubit.dart';
 import 'package:pemesanan_makanan/utils/routes.dart';
 
 class RegisterScreen extends StatefulWidget {

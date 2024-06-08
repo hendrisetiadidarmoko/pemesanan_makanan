@@ -3,6 +3,7 @@ import 'package:pemesanan_makanan/ui/home_screen.dart';
 import 'package:pemesanan_makanan/ui/login.dart';
 import 'package:pemesanan_makanan/ui/foodList_screen.dart';
 import 'package:pemesanan_makanan/ui/keranjang_screen.dart';
+import 'package:pemesanan_makanan/ui/profile.dart';
 import 'package:pemesanan_makanan/ui/riwayat_screen.dart';
 
 class NavigatorScreen extends StatefulWidget {
@@ -30,7 +31,7 @@ class _NavigatorScreenState extends State<NavigatorScreen> {
           HomeScreen(),
           KeranjangScreen(), // Replace with CartScreen() when created
           RiwayatScreen(), // Replace with FoodListScreen() when created
-          LoginScreen(), // Replace with ProfileScreen() when created
+          ProfileScreen(), // Replace with ProfileScreen() when created
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(

@@ -103,7 +103,7 @@ class _PhoneAuthScreenState extends State<PhoneAuthScreen> {
               height: 10,
             ),
             MaterialButton(
-              color: const Color(0xff3D4DE0),
+              color: Color.fromRGBO(253, 65, 2, 1),
               onPressed: () {
                 if (_phoneController.text.isNotEmpty) {
                   if (otpVisibility) {
