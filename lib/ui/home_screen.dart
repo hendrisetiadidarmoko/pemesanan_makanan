@@ -83,7 +83,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 },
               ),
             ),
-            Expanded(
+            Container(
               child: CarouselSlider(
                 items: imageSliders,
                 carouselController: _controller,

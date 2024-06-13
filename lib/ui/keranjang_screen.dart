@@ -57,6 +57,7 @@ class _KeranjangScreenState extends State<KeranjangScreen> {
         child: Column(
           children: [
             Expanded(
+              
               child: ListView(
                 children: [
                   FutureBuilder<List<MenuItem>>(
@@ -84,7 +85,7 @@ class _KeranjangScreenState extends State<KeranjangScreen> {
                           itemBuilder: (context, index) {
                             MenuItem menuItem = filteredItems[index];
                             return Container(
-                              margin: EdgeInsets.fromLTRB(20, 20, 20, 0),
+                              margin: EdgeInsets.fromLTRB(0, 10, 0, 10),
                               decoration: BoxDecoration(
                                 border: Border.all(
                                   color: Color.fromRGBO(0, 0, 0, 0.25),

@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
-
-
 class MenuItem {
   final String id;
   final String nama;
@@ -25,40 +23,42 @@ class MenuItem {
 
   factory MenuItem.fromJson(Map<String, dynamic> json) {
     return MenuItem(
-      id: json['id'], // Pastikan atribut 'id' ada dalam data JSON
+      id: json['id'], // Ensure 'id' attribute exists in JSON data
       nama: json['nama'],
       harga: json['harga'],
       jenis: json['jenis'],
-      rate: json['rate'].toDouble(),
+      rate: json['rate'] is int ? (json['rate'] as int).toDouble() : json['rate'],
       value: json['value'],
-      hargaAkhir: json['harga_akhir'],
+      hargaAkhir: json['harga_akhir'] is int ? (json['harga_akhir'] as int).toDouble() : json['harga_akhir'],
     );
   }
 
   void incrementValue() {
     value += 1;
   }
-  
 }
 
 Future<List<MenuItem>> fetchMenuItems() async {
   final response = await http.get(Uri.parse(
       'https://pemesananmakanan-67326-default-rtdb.firebaseio.com/menu_makanan.json'));
 
-  if (response.statusCode == 200) {
-    List<MenuItem> menuItems = [];
-    Map<String, dynamic> data = jsonDecode(response.body);
-    data.forEach((key, value) {
-      menuItems.add(MenuItem.fromJson({
-        'id': key,
-        ...value,
-      }));
-    });
-    return menuItems;
-  } else {
+  if (response.statusCode != 200) {
     throw Exception('Failed to load menu items');
   }
+
+  print(response.body); // Tambahkan ini untuk mencetak respons
+
+  List<MenuItem> menuItems = [];
+  Map<String, dynamic> data = jsonDecode(response.body);
+  data.forEach((key, value) {
+    menuItems.add(MenuItem.fromJson({
+      'id': key,
+      ...value,
+    }));
+  });
+  return menuItems;
 }
+
 
 Future<void> updateMenuItemValue(
     String itemId, int currentValue, int harga, double hargaAkhir) async {
@@ -110,6 +110,7 @@ Future<void> minMenuItemValue(
     throw Exception('Failed to update menu item value');
   }
 }
+
 Future<void> defaultMenuItemValue(
     String itemId, int currentValue, int harga, double hargaAkhir) async {
   final url = Uri.parse(
@@ -126,5 +127,3 @@ Future<void> defaultMenuItemValue(
     throw Exception('Failed to update menu item value');
   }
 }
-
-
